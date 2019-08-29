@@ -1,0 +1,35 @@
+<header>
+  <h1>Shopping Cart</h1>
+</header>
+
+<section class="button-container">
+  <button (click)="toggle()">ADD</button>
+</section>
+
+<form *ngIf="show_form">
+  <label for="product">Product:</label>
+  <input type="text" name="product" id="product" />
+  <label for="price">Price:</label>
+  <input type="text" name="price" id="price" />
+  <label for="quantity">Quantity:</label>
+  <input type="text" name="quantity" id="quantity" />
+  <button (click)="newItem()" type="submit">Submit</button>
+</form>
+
+<section id="table-header">
+  <p>#</p>
+  <p>Product</p>
+  <p>Price</p>
+  <p>Quantity</p>
+  <p>Delete</p>
+  <p>Edit</p>
+</section>
+
+<section class="item" *ngFor="let item of cartItems; index as i">
+  <p>{{ i }}</p>
+  <p>{{ item.product }}</p>
+  <p>{{ item.price }}</p>
+  <p>{{ item.quantity }}</p>
+  <p><i (click)="deleteItem(item.id)" class="fas fa-trash"></i></p>
+  <p><i (click)="newQuantity(item.id)" class="far fa-edit"></i></p>
+</section>
